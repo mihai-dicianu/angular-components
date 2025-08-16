@@ -1,0 +1,25 @@
+<svg [attr.width]="diameter()" [attr.height]="diameter()" [attr.viewBox]="'0 0 ' + diameter() + ' ' + diameter()">
+    
+    <!-- Background circle -->
+    <circle
+        fill="none"
+        [attr.cx]="radius()"
+        [attr.cy]="radius()"
+        [attr.r]="innerRadius()"
+        [attr.stroke-width]="strokeWidth()"
+        stroke="#e0e0e0"
+    />
+
+    <!-- Progress circle -->
+    <circle
+        class="progress"
+        fill="none"
+        [attr.cx]="radius()"
+        [attr.cy]="radius()"
+        [attr.r]="innerRadius()"
+        [attr.stroke-width]="strokeWidth()"
+        [attr.stroke]="color()"
+        [style.stroke-dasharray.px]="circumference()"
+        [style.stroke-dashoffset.px]="targetOffset()"
+    />
+  </svg>
