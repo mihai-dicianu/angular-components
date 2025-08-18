@@ -1,0 +1,70 @@
+<table>
+    <thead>
+        <tr>
+            @for (column of columns(); track column.name) {
+                
+                <th 
+                    [class.sortable]="column.sortable"
+                    (click)="onSort(column.name)">
+                    {{column.name}}
+                                    
+                    @if (sortable() && column.sortable) {
+                        <span class="sort-icon">
+                            @if (sortedColumn()?.name !== column.name) {
+                                ↕
+                            } @else {
+                                @if (sortedColumn()?.sortDirection === Direction.asc) {
+                                    ↑
+                                } @else {
+                                    ↓
+                                }
+                            }
+                        </span>
+                    }
+                </th>
+                
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of paginatedData(); track $index) {
+            <tr>
+                @for (column of columns(); track column.name) {
+                    <td>{{ item[column.property] }}</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+  
+<!-- Pagination Controls -->
+<div class="pagination-controls">
+    <span>Page {{ currentPage() }} of {{ totalPages() }} ({{ totalItems() }} total items)</span>
+
+    <div class="pagination-buttons">
+        <button 
+        [disabled]="!previousPageEnabled()" 
+        (click)="onPageChange(currentPage() - 1)">
+        Previous
+        </button>
+        <button 
+        [disabled]="!nextPageEnabled()" 
+        (click)="onPageChange(currentPage() + 1)">
+        Next
+        </button>
+    </div>
+
+    <div class="page-size-selector">
+        <label for="pageSize">Page Size:</label>
+        <select 
+        id="pageSize" 
+        [value]="pageSize()" 
+        (change)="onPageSizeChange($event)">
+            @for (size of PAGE_SIZES; track size.value) {
+                @if (size.value < totalItems()) {
+                    <option [value]="size.value">{{size.label}}</option>
+                }
+            }
+        </select>
+    </div>
+</div>
