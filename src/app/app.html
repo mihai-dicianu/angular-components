@@ -45,23 +45,23 @@
     <div class="progress-control">
       <label for="progress">Progress</label>
       <span>{{progress()}}%</span>
-      <input [(ngModel)]="progress" type="range" name="progress" min="0" max="100"/>
+      <input [(ngModel)]="progress" type="range" name="progress" id="progress" min="0" max="100"/>
     </div>
     
     <div class="progress-control">
       <label for="radius">Radius</label>
       <span>{{radius()}}px</span>
-      <input [(ngModel)]="radius" type="range" name="radius" min="50" max="150"/>
+      <input [(ngModel)]="radius" type="range" name="radius" id="radius" min="50" max="150"/>
     </div>
     
     <div class="progress-control">
       <label for="color">Color</label>
       {{color()}}
-      <input [(ngModel)]="color" type="color" name="color"/>
+      <input [(ngModel)]="color" type="color" name="color" id="color"/>
     </div>
   </div>
 
-  <t-progress [radius]="radius()" [progress]="progress()" [color]="color()"></t-progress>
+  <t-progress [radius]="radius()" [progress]="progress()" [color]="color()" (complete)="onProgressComplete()"></t-progress>
 </div>
 
 
