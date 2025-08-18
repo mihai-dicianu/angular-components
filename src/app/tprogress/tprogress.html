@@ -3,8 +3,8 @@
     <!-- Background circle -->
     <circle
         fill="none"
-        [attr.cx]="radius()"
-        [attr.cy]="radius()"
+        [attr.cx]="clampedRadius()"
+        [attr.cy]="clampedRadius()"
         [attr.r]="innerRadius()"
         [attr.stroke-width]="strokeWidth()"
         stroke="#e0e0e0"
@@ -14,8 +14,8 @@
     <circle
         class="progress"
         fill="none"
-        [attr.cx]="radius()"
-        [attr.cy]="radius()"
+        [attr.cx]="clampedRadius()"
+        [attr.cy]="clampedRadius()"
         [attr.r]="innerRadius()"
         [attr.stroke-width]="strokeWidth()"
         [attr.stroke]="color()"

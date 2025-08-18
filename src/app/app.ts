@@ -56,4 +56,8 @@ export class App {
     this.pageSize.set(event.pageSize);
     console.log('Pagination change:', event);
   }
+
+  onProgressComplete(): void {
+    console.log('Progress complete');
+  }
 }
