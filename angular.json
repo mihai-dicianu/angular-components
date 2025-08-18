@@ -14,6 +14,13 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "buildTarget": "angular-components:build:production",
+            "outputPath": "dist/angular-components"
+          }
+        },
         "build": {
           "builder": "@angular/build:application",
           "options": {
@@ -35,6 +42,8 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "dist/angular-components",
+              "baseHref": "/angular-components/",
               "budgets": [
                 {
                   "type": "initial",
