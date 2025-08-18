@@ -1,11 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
-import { Direction } from '../tgrid/tgrid.component';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 't-column',
   imports: [],
-  template: `
-  `,
+  template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TcolumnComponent<T = any> {
