@@ -23,13 +23,27 @@ export class TProgress {
     return this.radius();
   });
 
+  clampedProgress = computed(
+    () => {
+      const progress = this.progress();
+      if(progress < 0) {
+        console.warn('TProgress: Progress is less than 0, clamping to 0');
+        return 0;
+      }
+      if(progress > 100) {
+        console.warn('TProgress: Progress is greater than 100, clamping to 100');
+        return 100;
+      }
+      return progress;
+    }
+  );
+
   diameter = computed(() => this.clampedRadius() * 2);
   innerRadius = computed(() => this.clampedRadius() - this.strokeWidth() / 2);
   circumference = computed(() => 2 * Math.PI * this.innerRadius());
   targetOffset = computed(() => this.circumference() * (1 - this.clampedProgress() / 100));
   strokeWidth = computed(() => this.clampedRadius() / 5);
-  clampedProgress = computed(() => Math.max(0, Math.min(100, this.progress())));
-
+  
   private previousProgress: number = 0;
   private animationTimeout: number | null = null;
 
