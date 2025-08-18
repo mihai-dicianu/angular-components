@@ -3,8 +3,8 @@ import { Component, input, output, computed, ChangeDetectionStrategy, effect } f
 @Component({
   selector: 't-progress',
   imports: [],
-  templateUrl: './tprogress.html',
-  styleUrl: './tprogress.scss',
+  templateUrl: './tprogress.component.html',
+  styleUrl: './tprogress.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TProgress {

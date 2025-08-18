@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { TProgress } from './tprogress/tprogress';
+import { TProgress } from './tprogress/tprogress.component';
 import { PaginationChangeEvent, SortChangeEvent, TgridComponent } from './tgrid/tgrid.component';
 import { TcolumnComponent } from './tcolumn/tcolumn.component';
 
