@@ -61,7 +61,7 @@
         [value]="pageSize()" 
         (change)="onPageSizeChange($event)">
             @for (size of PAGE_SIZES; track size.value) {
-                @if (size.value < totalItems()) {
+                @if (size.value === null || size.value < totalItems()) {
                     <option [value]="size.value">{{size.label}}</option>
                 }
             }
