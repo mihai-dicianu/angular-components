@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Grid Component Demo</h1>
+    <h1>Table Demo</h1>
     
     <t-grid 
       [data]="myData"
@@ -39,19 +39,29 @@
       </t-column>
     </t-grid>
     
-  <h1>Progress indicator controls</h1>
+  <h1>Progress indicator demo</h1>
   <div class="controls-container">
 
     <div class="progress-control">
       <label for="progress">Progress</label>
       <span>{{progress()}}%</span>
-      <input [(ngModel)]="progress" type="range" name="progress" id="progress" min="-10" max="100"/>
+      <input [(ngModel)]="progress" type="range" name="progress" id="progress" min="-10" max="100" list="progresslist"/>
+      <datalist id="progresslist">
+        <option>0</option>
+        <option>25</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
+      </datalist>
     </div>
     
     <div class="progress-control">
       <label for="radius">Radius</label>
       <span>{{radius()}}px</span>
-      <input [(ngModel)]="radius" type="range" name="radius" id="radius" min="20" max="100"/>
+      <input [(ngModel)]="radius" type="range" name="radius" id="radius" min="20" max="100" list="radiuslist"/>
+      <datalist id="radiuslist">
+        <option>50</option>
+      </datalist>
     </div>
     
     <div class="progress-control">
