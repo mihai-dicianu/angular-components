@@ -6,6 +6,7 @@ import { PaginationChangeEvent, SortChangeEvent, TgridComponent } from './tgrid/
 import { TcolumnComponent } from './tcolumn/tcolumn.component';
 
 interface Person {
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -25,25 +26,25 @@ export class App {
   pageSize = signal<number | null>(5);
 
   myData: Person[] = [
-    { firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com', age: 30 },
-    { firstName: 'Jane', lastName: 'Smith', email: 'jane.smith@example.com', age: 25 },
-    { firstName: 'Bob', lastName: 'Johnson', email: 'bob.johnson@example.com', age: 35 },
-    { firstName: 'Alice', lastName: 'Brown', email: 'alice.brown@example.com', age: 28 },
-    { firstName: 'Charlie', lastName: 'Wilson', email: 'charlie.wilson@example.com', age: 32 },
-    { firstName: 'Diana', lastName: 'Davis', email: 'diana.davis@example.com', age: 27 },
-    { firstName: 'Edward', lastName: 'Miller', email: 'edward.miller@example.com', age: 40 },
-    { firstName: 'Fiona', lastName: 'Garcia', email: 'fiona.garcia@example.com', age: 29 },
-    { firstName: 'George', lastName: 'Martinez', email: 'george.martinez@example.com', age: 33 },
-    { firstName: 'Helen', lastName: 'Robinson', email: 'helen.robinson@example.com', age: 31 },
-    { firstName: 'Ian', lastName: 'Clark', email: 'ian.clark@example.com', age: 26 },
-    { firstName: 'Julia', lastName: 'Rodriguez', email: 'julia.rodriguez@example.com', age: 34 },
-    { firstName: 'Kevin', lastName: 'Lopez', email: 'kevin.lopez@example.com', age: 28 },
-    { firstName: 'Linda', lastName: 'Hernandez', email: 'linda.hernandez@example.com', age: 30 },
-    { firstName: 'Michael', lastName: 'Garcia', email: 'michael.garcia@example.com', age: 32 },
-    { firstName: 'Nancy', lastName: 'Martinez', email: 'nancy.martinez@example.com', age: 29 },
-    { firstName: 'Oliver', lastName: 'Davis', email: 'oliver.davis@example.com', age: 31 },
-    { firstName: 'Patricia', lastName: 'Rodriguez', email: 'patricia.rodriguez@example.com', age: 27 },
-    { firstName: 'Quincy', lastName: 'Martinez', email: 'quincy.martinez@example.com', age: 33 },
+    { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com', age: 30 },
+    { id: 2, firstName: 'Jane', lastName: 'Smith', email: 'jane.smith@example.com', age: 25 },
+    { id: 3, firstName: 'Bob', lastName: 'Johnson', email: 'bob.johnson@example.com', age: 35 },
+    { id: 4, firstName: 'Alice', lastName: 'Brown', email: 'alice.brown@example.com', age: 28 },
+    { id: 5, firstName: 'Charlie', lastName: 'Wilson', email: 'charlie.wilson@example.com', age: 32 },
+    { id: 6, firstName: 'Diana', lastName: 'Davis', email: 'diana.davis@example.com', age: 27 },
+    { id: 7, firstName: 'Edward', lastName: 'Miller', email: 'edward.miller@example.com', age: 40 },
+    { id: 8, firstName: 'Fiona', lastName: 'Garcia', email: 'fiona.garcia@example.com', age: 29 },
+    { id: 9, firstName: 'George', lastName: 'Martinez', email: 'george.martinez@example.com', age: 33 },
+    { id: 10, firstName: 'Helen', lastName: 'Robinson', email: 'helen.robinson@example.com', age: 31 },
+    { id: 11, firstName: 'Ian', lastName: 'Clark', email: 'ian.clark@example.com', age: 26 },
+    { id: 12, firstName: 'Julia', lastName: 'Rodriguez', email: 'julia.rodriguez@example.com', age: 34 },
+    { id: 13, firstName: 'Kevin', lastName: 'Lopez', email: 'kevin.lopez@example.com', age: 28 },
+    { id: 14, firstName: 'Linda', lastName: 'Hernandez', email: 'linda.hernandez@example.com', age: 30 },
+    { id: 15, firstName: 'Michael', lastName: 'Garcia', email: 'michael.garcia@example.com', age: 32 },
+    { id: 16, firstName: 'Nancy', lastName: 'Martinez', email: 'nancy.martinez@example.com', age: 29 },
+    { id: 17, firstName: 'Oliver', lastName: 'Davis', email: 'oliver.davis@example.com', age: 31 },
+    { id: 18, firstName: 'Patricia', lastName: 'Rodriguez', email: 'patricia.rodriguez@example.com', age: 27 },
+    { id: 19, firstName: 'Quincy', lastName: 'Martinez', email: 'quincy.martinez@example.com', age: 33 },
   ];
   
 
