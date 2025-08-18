@@ -1,5 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 .container {
-    height: 100%;
+    flex: 1;
     padding-top: 50px;
     padding-bottom: 50px;
     box-sizing: border-box;
@@ -8,16 +16,17 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
-    background-color: var(--champagne-pink);
+    background-color: lightgrey;
 }
 
 .controls-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
     border-radius: 10px;
     background-color: var(--white);
-    padding: 1rem;
+    padding: 1rem 2rem;
 }
 
 .progress-control {
@@ -28,5 +37,6 @@
     input {
         width: 100%;
     }
+   
 }
 

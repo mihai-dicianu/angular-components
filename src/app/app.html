@@ -39,8 +39,8 @@
       </t-column>
     </t-grid>
     
-  <h1>Progress indicator demo</h1>
   <div class="controls-container">
+    <h1>Progress indicator demo</h1>
 
     <div class="progress-control">
       <label for="progress">Progress</label>
@@ -69,9 +69,10 @@
       {{color()}}
       <input [(ngModel)]="color" type="color" name="color" id="color"/>
     </div>
+
+    <t-progress [radius]="radius()" [progress]="progress()" [color]="color()" (complete)="onProgressComplete()"></t-progress>
   </div>
 
-  <t-progress [radius]="radius()" [progress]="progress()" [color]="color()" (complete)="onProgressComplete()"></t-progress>
 </div>
 
 

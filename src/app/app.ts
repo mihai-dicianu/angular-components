@@ -5,7 +5,7 @@ import { TProgress } from './tprogress/tprogress.component';
 import { PaginationChangeEvent, SortChangeEvent, TgridComponent } from './tgrid/tgrid.component';
 import { TcolumnComponent } from './tcolumn/tcolumn.component';
 
-interface Person {
+export interface Person {
   id: number;
   firstName: string;
   lastName: string;
