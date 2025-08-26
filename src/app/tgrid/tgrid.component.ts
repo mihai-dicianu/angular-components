@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, signal, computed, effect, input, output, AfterContentInit } from '@angular/core';
-import { Observable, isObservable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, signal, computed, effect, input, output, AfterContentInit, OnDestroy } from '@angular/core';
+import { Observable, isObservable, Subscription } from 'rxjs';
 import { TcolumnComponent } from '../tcolumn/tcolumn.component';
 
 export enum Direction { asc = 'asc', desc = 'desc' }
@@ -30,7 +30,7 @@ export interface Column<T> {
   styleUrl: './tgrid.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TgridComponent<T> implements AfterContentInit {
+export class TgridComponent<T> implements AfterContentInit, OnDestroy {
  
   // SPECS 
   data = input<T[] | Observable<T[]>>([]);
@@ -60,6 +60,7 @@ export class TgridComponent<T> implements AfterContentInit {
   currentPage = signal<number>(1);
   
   private _currentData = signal<T[]>([]);
+  private dataSubscription?: Subscription;
   
   sortedData = computed(() => {
       const data = this._currentData();
@@ -103,7 +104,7 @@ export class TgridComponent<T> implements AfterContentInit {
     effect(() => {
       const data = this.data();
       if (isObservable(data)) {
-        data.subscribe(items => this._currentData.set(items));
+        this.dataSubscription = data.subscribe(items => this._currentData.set(items));
       } else {
         this._currentData.set(data);
       }
@@ -156,6 +157,12 @@ export class TgridComponent<T> implements AfterContentInit {
       currentPage: this.currentPage(),
       pageSize: pageSize || null
     });
+  }
+  
+  ngOnDestroy(): void {
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
+    }
   }
   
 }
