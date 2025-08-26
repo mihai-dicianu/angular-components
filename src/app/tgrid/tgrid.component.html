@@ -4,8 +4,8 @@
             @for (column of columns(); track column.name) {
                 
                 <th 
-                    [class.sortable]="column.sortable"
-                    (click)="onSort(column.name)">
+                    [class.sortable]="column.sortable && sortable()"
+                    (click)="sortable() && onSort(column.name)">
                     {{column.name}}
                                     
                     @if (sortable() && column.sortable) {

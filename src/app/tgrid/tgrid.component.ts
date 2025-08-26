@@ -122,6 +122,8 @@ export class TgridComponent<T> implements AfterContentInit, OnDestroy {
   }
   
   onSort(columnName: string): void {
+    if(!this.sortable()) return;
+    
     let column;
     if(this.sortedColumn()?.name === columnName) {
       column = this.sortedColumn();

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TProgress } from './tprogress/tprogress.component';
 import { PaginationChangeEvent, SortChangeEvent, TgridComponent } from './tgrid/tgrid.component';
 import { TcolumnComponent } from './tcolumn/tcolumn.component';
+import { delay, Observable, of } from 'rxjs';
 
 export interface Person {
   id: number;
@@ -25,7 +26,7 @@ export class App {
 
   pageSize = signal<number | null>(5);
 
-  myData: Person[] = [
+  myData: Observable<Person[]> = of([
     { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com', age: 30 },
     { id: 2, firstName: 'Jane', lastName: 'Smith', email: 'jane.smith@example.com', age: 25 },
     { id: 3, firstName: 'Bob', lastName: 'Johnson', email: 'bob.johnson@example.com', age: 35 },
@@ -45,7 +46,9 @@ export class App {
     { id: 17, firstName: 'Oliver', lastName: 'Davis', email: 'oliver.davis@example.com', age: 31 },
     { id: 18, firstName: 'Patricia', lastName: 'Rodriguez', email: 'patricia.rodriguez@example.com', age: 27 },
     { id: 19, firstName: 'Quincy', lastName: 'Martinez', email: 'quincy.martinez@example.com', age: 33 },
-  ];
+  ]).pipe(
+    delay(1000)
+  );
   
 
   onSortChange(event: SortChangeEvent): void {
