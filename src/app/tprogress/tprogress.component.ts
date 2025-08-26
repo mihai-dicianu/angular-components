@@ -9,19 +9,20 @@ import { Component, input, output, computed, ChangeDetectionStrategy, effect } f
 })
 export class TProgress {
   // SPECS
-  radius = input<number>(50);
+  radius = input(50, {
+    transform: (value: number) => {
+      if(value < 50) {
+        console.warn('TProgress: Radius is less than 50, clamping to 50');
+        return 50;
+      } else {
+        return value;
+      }
+    }
+  });
   progress = input<number>(0);
   color = input<string>('#efefef');
   complete = output<void>(); // can be improved
   // END SPECS
-
-  clampedRadius = computed(() => {
-    if(this.radius() < 50) {
-      console.warn('TProgress: Radius is less than 50, clamping to 50');
-      return 50;
-    }
-    return this.radius();
-  });
 
   clampedProgress = computed(
     () => {
@@ -38,11 +39,11 @@ export class TProgress {
     }
   );
 
-  diameter = computed(() => this.clampedRadius() * 2);
-  innerRadius = computed(() => this.clampedRadius() - this.strokeWidth() / 2);
+  diameter = computed(() => this.radius() * 2);
+  innerRadius = computed(() => this.radius() - this.strokeWidth() / 2);
   circumference = computed(() => 2 * Math.PI * this.innerRadius());
   targetOffset = computed(() => this.circumference() * (1 - this.clampedProgress() / 100));
-  strokeWidth = computed(() => this.clampedRadius() / 5);
+  strokeWidth = computed(() => this.radius() / 5);
   
   private previousProgress: number = 0;
   private animationTimeout: number | null = null;
