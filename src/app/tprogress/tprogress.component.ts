@@ -19,14 +19,9 @@ export class TProgress {
       }
     }
   });
-  progress = input<number>(0);
-  color = input<string>('#efefef');
-  complete = output<void>(); // can be improved
-  // END SPECS
-
-  clampedProgress = computed(
-    () => {
-      const progress = this.progress();
+  progress = input(0, {
+    transform: (value: number) => {
+      const progress = value;
       if(progress < 0) {
         console.warn('TProgress: Progress is less than 0, clamping to 0');
         return 0;
@@ -37,12 +32,16 @@ export class TProgress {
       }
       return progress;
     }
-  );
+  });
+  color = input<string>('#efefef');
+  complete = output<void>(); // can be improved
+  // END SPECS
+
 
   diameter = computed(() => this.radius() * 2);
   innerRadius = computed(() => this.radius() - this.strokeWidth() / 2);
   circumference = computed(() => 2 * Math.PI * this.innerRadius());
-  targetOffset = computed(() => this.circumference() * (1 - this.clampedProgress() / 100));
+  targetOffset = computed(() => this.circumference() * (1 - this.progress() / 100));
   strokeWidth = computed(() => this.radius() / 5);
   
   private previousProgress: number = 0;
@@ -50,7 +49,7 @@ export class TProgress {
 
   constructor() {
     effect(() => {
-      const currentProgress = this.clampedProgress();
+      const currentProgress = this.progress();
       const previousProgress = this.previousProgress;
       
       if (this.animationTimeout) {
